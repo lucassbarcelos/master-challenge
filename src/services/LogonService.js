@@ -13,14 +13,14 @@ module.exports =
       const token = await generateToken({ id: id })
 
       const teste = await getByEmail(email)
-
-      if (email === teste[0].email) { return res.send(400, { error: 'deu ruim' }) }
+      if (!teste && email === teste[0].email) { return res.send(400, { error: 'deu ruim' }) }
 
       const password = await bcrypt.hash(req.body.password, 10)
 
       await create({ id, name, role, password, email })
 
       const newUser = await getByEmail(email)
+      console.log(newUser)
 
       newUser[0].password = undefined
 

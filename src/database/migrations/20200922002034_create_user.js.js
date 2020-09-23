@@ -1,17 +1,13 @@
 exports.up = function (knex, Promise) {
   return knex.schema.createTable('users', function (t) {
-    t.increments('id').unsigned().primary()
-    t.dateTime('createdAt').notNull()
-    t.dateTime('updatedAt').nullable()
-    t.dateTime('deletedAt').nullable()
-
+    t.string('id').primary()
     t.string('name').notNull()
-    t.text('decription').nullable()
-    t.decimal('price', 6, 2).notNull()
-    t.enum('category', ['apparel', 'electronics', 'furniture']).notNull()
+    t.string('email').unique.notNull()
+    t.string('password').notNull()
+    t.string('role').notNull()
   })
 }
 
 exports.down = function (knex) {
-  return knex.schema.dropTable('products')
+  return knex.schema.dropTable('users')
 }

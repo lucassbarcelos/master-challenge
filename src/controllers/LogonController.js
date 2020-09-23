@@ -1,14 +1,10 @@
 const express = require('express')
-// const LogonService = require('../services/LogonService')
+const { create, logon } = require('../services/LogonService')
 
 const routes = express.Router()
 
-routes.post('/register', (req, res) => {
-  return res.status(200).send('goHorse')
-})
+routes.post('/register', create)
 
-routes.post('/logon', (req, res) => {
-  return res.status(200).send('goHorse')
-})
+routes.post('/logon', logon)
 
 module.exports = (app) => app.use('/', routes)

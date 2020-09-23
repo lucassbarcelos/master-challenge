@@ -61,3 +61,7 @@ knex migrate:latest
 ```
 
 ---
+
+5 - Import workspace to insominia
+
+/docs/Insomnia_master_challenge.json
